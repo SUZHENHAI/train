@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>计数器</h1>
+    <button onclick="minus();">-</button>
+    <span id='counter'>0</span>
+    <button onclick="plus();">+</button>
+    <script>
+        function minus(){
+            var el = document.querySelector('#counter');
+            console.log(el.innerHTML);
+            if(el.innerHTML>1){
+                el.innerHTML--;
+            }
+        }
+        function plus(){
+            var el = document.querySelector('#counter');
+            console.log(el.innerHTML);
+                el.innerHTML++;
+        }
+    </script>
+
+<h1>计数器</h1>
+<button id='minus'>-</button>
+<span id='num'>0</span>
+<button id="plus">+</button>
+<script>
+    var num = document.querySelector("#num");
+    $(function(){
+        $('#minus').click(function(){
+            if(num.innerHTML>1)
+            num.innerHTML--;
+        })
+    })
+    $(function(){
+        $('#plus').click(function(){
+            num.innerHTML++;
+        })
+    })
+</script>
+</body>
+</html>
