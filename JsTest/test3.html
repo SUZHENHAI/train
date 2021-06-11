@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .danger {
+            color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>商品添加和删除</h2>
+    <div id="message"></div>
+
+    <ul id="good">
+
+    </ul>
+
+    <button id="deleteAll">删除所有商品</button>
+
+    <div>
+        <span>名称</span>
+        <input type="text" id="inputMsg">
+        <button id="add">添加</button>
+    </div>
+
+    <script>
+        axios.get('https://www.fastmock.site/mock/e90e425564873314a076d3400468388f/API/API/list').then(function(res){
+            console.log('mock',res.data);
+            $(document).ready(function () {
+            // 添加商品
+            for(let i=0;i<res.data.data.length;i++){
+                console.log(res.data.data[i]);
+                $('#good').append(`<li>${res.data.data[i].name} ${res.data.data[i].price}</li>`)
+            }
+
+            $("#add").click(function () {
+                var inputMsg = $("#inputMsg").val()
+                console.log(inputMsg);
+                $("#good").append("<li>" + inputMsg + "</li>")
+                $("#message").html("添加了水果" + inputMsg)
+                $("#message").removeClass("danger");
+                //删除商品
+                $("#good li").click(function () {
+                    $(this).remove();
+                    $("#message").html("删除了水果:" + $(this).text())
+                    $("#message").addClass("danger")
+                })
+            })
+            //删除商品
+            $("#good li").click(function () {
+                $(this).remove();
+                $("#message").html("删除了水果" + $(this).text())
+                $("#message").addClass("danger")
+            })
+            $("#deleteAll").click(function () {
+                $("#good li").remove();
+                $("#message").html("删除了所有水果");
+                $("#message").addClass("danger")
+            })
+        })
+        });
+ 
+    </script>
+</body>
+
+</html>
