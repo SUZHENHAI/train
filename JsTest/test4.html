@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .danger {
+            color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>商品添加和删除</h2>
+    <div id="message"></div>
+
+    <ul id="good">
+
+    </ul>
+    <button id="button1">1</button>
+    <button id="button2">2</button>
+    <button id="button3">3</button>
+  
+
+    <script>
+        function f1(page) {
+            axios.get('https://www.fastmock.site/mock/aab1e5a40da68e3c8d4de099d9e0da2d/test2/mulu?page=' + page).then(function (res) {
+                console.log('mock', res.data);
+                $(function () {
+
+                    for (let i = 0; i < res.data.data.product.length; i++) {
+                        console.log(res.data.data.product[i]);
+                        $('#good').append(`<li>${res.data.data.product[i].name} ${res.data.data.product[i].price}</li>`)
+                    }
+                })
+
+            });
+        }
+        f1(1);
+        $('#button1').click(function () {
+            $('#good li').remove();
+            f1(1);
+        })
+        $('#button2').click(function () {
+            $('#good li').remove();
+            f1(2);
+        })
+        $('#button3').click(function () {
+            $('#good li').remove();
+            f1(3);
+        })
+
+
+
+    </script>
+</body>
+
+</html>
