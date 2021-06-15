@@ -16,7 +16,7 @@
             margin: 0 auto;
             overflow: hidden;
         }
-
+        
         input {
             border-radius: 5px;
             display: block;
@@ -25,7 +25,7 @@
             margin: 0px auto;
             margin-top: 20px;
         }
-
+        
         .btn {
             width: 20%;
             height: 50px;
@@ -33,7 +33,7 @@
             margin: 0 auto;
             text-align: center;
         }
-
+        
         button {
             display: inline-block;
             width: 100px;
@@ -46,16 +46,16 @@
     <div class="screen"></div>
     <input type="text"><br>
     <div class="btn">
-        <button class="shoot">发射</button> 
+        <button class="shoot">发射</button>
         <button class="clear">清屏</button>
         <button class="vifrification">透明</button>
         <br>
-       <span>（鼠标点击后可改为回车点击）</span>
-    </div> 
+        <span>（鼠标点击后可改为回车点击）</span>
+    </div>
     <script>
-        $(function () {
+        $(function() {
             var op = 1;
-            $('.shoot').click(function () {
+            $('.shoot').click(function() {
                 var txt = $('input').val();
                 var span = $("<span></span>");
                 var fontsize = parseInt(Math.random() * 40) + 20;
@@ -75,26 +75,25 @@
                 $('.screen').append(span);
                 $('.screen').children().animate({
                     right: '100%'
-                }, v, function () {
+                }, v, function() {
                     $(this).remove();
                 })
             })
-            $('.clear').click(function () {
+            $('.clear').click(function() {
                 $('.screen').empty();
             })
-            $('input').keyup(function (e) {
+            $('input').keyup(function(e) {
                 if (e.keyCode == 13) {
-                    $('shoot').click();
+                    $('.shoot').click();
                 }
             })
             var flag = true;
-            $('.vifrification').click(function () {
+            $('.vifrification').click(function() {
                 if (flag == true) {
                     $('span').css('opacity', 0.3);
                     op = 0.3;
                     flag = false;
-                }
-                else {
+                } else {
                     $('span').css('opacity', 1);
                     op = 1;
                     flag = true;
