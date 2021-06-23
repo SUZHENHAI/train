@@ -14,13 +14,59 @@
 </head>
 
 <body>
-    <div id='div'></div>
+    <div id="header">
+        <div class="logo between container">
+            <div class="logo">
+                <img id="img1" src="logo.png">
+                <span>并夕夕</span>
+            </div>
+            <ul class="nav">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news.html">新闻</a></li>
+                <li><a href="map.html">关于我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--     <div id='div'></div> -->
+    <div id='main' class="container">
+
+    </div>
+    <div class="footer">
+        <div class="contact">
+            <div class="con s">
+                <img src="home.png" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">福州市闽江学院</p>
+            </div>
+            <div class="con s">
+                <img src="youxiang.png" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">919363477@qq.com</p>
+            </div>
+            <div class="con s">
+                <img src="tel-fill.png" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">178-5039-1856</p>
+            </div>
+            <div class="con l s">
+                <img src="erweima.jpg" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">扫一扫，了解我们</p>
+            </div>
+        </div>
+        <p class="bq"> 版权所有@并夕夕</p>
+    </div>
     <script>
-        alert(window.location.search.split('=')[1]);
-        axios.get(`https://lingqule.papamk.com/wp-json/w2w/v1/products/${window.location.search.split('=')[1]}`).then(function(res) {
+        /*  alert(window.location.search.split('=')[1]); */
+        var idx = window.location.search.split('=')[1];
+        /* axios.get(`https://www.fastmock.site/mock/9ebe3a368a27679abbcec28818a46c73/api/api/${window.location.search.split('=')[1]}`).then(function(res) { */
+        axios.get(`https://www.fastmock.site/mock/9ebe3a368a27679abbcec28818a46c73/api/api`).then(function(res) {
             console.log(res.data);
-            let title = $(`<h1>${res.data.name}</h1>`);
-            $('#div').append(title);
+            /*  let title = $(`<h1>${res.data.name}</h1>`);
+             $('#div').append(title); */
+            var main = $('#main');
+            console.log(res.data);
+            let title = $(`<h1>${res.data.data.news[idx].title}</h1>`);
+            main.append(title);
+            main.append(`<p style="color:red; font-size: 20px; margin: auto;">${res.data.data.news[idx].time}</p>`);
+            main.append(`<img src="${res.data.data.news[idx].img}" alt="">`);
+            main.append(`<p style="font-size: 28px; text-align:left">${res.data.data.news[idx].mainContent}</p>`);
         })
     </script>
 </body>

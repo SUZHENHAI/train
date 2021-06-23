@@ -61,23 +61,24 @@
 </head>
 
 <body>
-    <div style="background-color: skyblue;">
-        <div class="header containter">
+    <div id="header">
+        <div class="logo between container">
             <div class="logo">
-                <img width="70px" src="logo.png" alt="">
-                <span>主题</span>
+                <img id="img1" src="logo.png">
+                <span>并夕夕</span>
             </div>
             <ul class="nav">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">新闻</a></li>
-                <li><a href="#">关于我们</a></li>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news.html">新闻</a></li>
+                <li><a href="map.html">关于我们</a></li>
             </ul>
         </div>
     </div>
 
+
     <!-- 列表页 -->
     <div>
-        <ul class="list container">
+        <ul class="list container list11">
 
         </ul>
     </div>
@@ -89,9 +90,9 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li onclick="page(1)" class="page-item"><a class="page-link" href="#">1</a></li>
-            <li onclick="page(2)" class="page-item"><a class="page-link" href="#">2</a></li>
-            <li onclick="page(3)" class="page-item"><a class="page-link" href="#">3</a></li>
+            <li onclick="getUrl(1)" class="page-item"><a class="page-link" href="#">1</a></li>
+            <li onclick="getUrl(2)" class="page-item"><a class="page-link" href="#">2</a></li>
+            <li onclick="getUrl(3)" class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item">
                 <a onclick="next()" class="page-link" href="#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
@@ -99,42 +100,75 @@
             </li>
         </ul>
     </nav>
+    <div class="footer">
+        <div class="contact">
+            <div class="con s">
+                <img src="home.png" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">福州市闽江学院</p>
+            </div>
+            <div class="con s">
+                <img src="youxiang.png" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">919363477@qq.com</p>
+            </div>
+            <div class="con s">
+                <img src="tel-fill.png" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">178-5039-1856</p>
+            </div>
+            <div class="con l s">
+                <img src="erweima.jpg" alt="" style="width: 200px; height: 200px;">
+                <p style="font-size: 25px;">扫一扫，了解我们</p>
+            </div>
+        </div>
+        <p class="bq"> 版权所有@并夕夕</p>
+    </div>
     <script>
-        let current = 1;
-        page(1);
+        let current = Number(window.location.href.split("?page=")[1]) || 1;
+        //page(1);
+
 
         function pre() {
             if (current > 1) {
-                page(current - 1);
+                getUrl(current - 1);
             }
         }
 
         function next() {
             if (current < 3) {
-                page(current + 1);
+                getUrl(current + 1);
             }
         }
 
+        function getUrl(page) {
+            window.location.href = `?page=${page}`
+        }
+        page(current);
+
         function page(page) {
             current = page;
-            $('.list').empty();
-            axios.get('https://lingqule.papamk.com/wp-json/w2w/v1/products?page=' + page).then(function(res) {
-                console.log(res.data);
-                for (let i = 0; i < 9; i++) {
-                    let li = $('<li></li>');
-                    li.append(`<img width='300px' height='300px' src="${res.data[i].images[0].src}">`);
-                    li.append(`<h3>${res.data[i].name}</h3>`)
-                    li.append(`<span>${res.data[i].data_created}</span>`)
-                    li.attr('id', res.data[i].id);
-                    $('.list').append(li);
 
+            $('.list').empty();
+            axios.get(`https://www.fastmock.site/mock/9ebe3a368a27679abbcec28818a46c73/api/api?page=${page}`).then(function(res) {
+                console.log(res.data);
+
+                for (let i = 0; i < 8; i++) {
+                    let li = $("<li></li>");
+                    li.append(`<img width='400px' height='400px' src="${res.data.data.list[i].img}" alt="">`);
+                    li.append(`<p style="font-weight: bold; font-size:20px">${res.data.data.list[i].title}</p>`);
+                    li.append(`<p style="color:darkgrey; font-size: 10px; margin: auto;">${res.data.data.list[i].time}</p>`);
+                    li.append(`<p style="font-size: 13px;">${res.data.data.list[i].content}</p>`);
+                    li.attr('id', res.data.data.list[i].id)
+                    $(".list").append(li);
+
+                    $('.list li').click(function() {
+                        window.location.href = `detail.html?id=${$(this).attr('id')}`
+                    })
                 }
-                $('.list li').click(function() {
-                    window.location.href = `detail.html?id=${$(this).attr('id')}`
-                })
+
+
             })
         }
     </script>
+
 </body>
 
 </html>
