@@ -1,79 +1,130 @@
-body{
+body {
     margin: 0;
 }
-#header{
+
+#header {
     background-color: orangered;
     display: flex;
     align-items: center;
     height: 60px;
     justify-content: space-around;
 }
-.container{
+
+.container {
     font-size: 20px;
     width: 1200px;
     text-align: center;
     margin: 0 auto;
 }
-.logo{
+
+.logo {
     display: flex;
     align-items: center;
 }
-.logo span{
-   margin-left: 5px ;
+
+.logo span {
+    margin-left: 5px;
 }
-#img1{
+
+#img1 {
     height: 40px;
     width: 40px;
 }
-.nav{
-   list-style: none;
+
+.nav {
+    list-style: none;
 }
-.nav li{
-    float:right;
+
+.nav li {
+    float: right;
     margin-left: 5px;
 }
-.between{
+
+.between {
     justify-content: space-between;
 }
-.content hr{
+
+.content hr {
     width: 50px;
     border-bottom: 3px solid black;
     color: black;
 }
-#content ul{
+
+#content ul {
     display: flex;
     justify-content: space-around;
-    padding:0%;
+    padding: 0%;
 }
-#content ul img{
+
+#content ul img {
     display: flex;
     justify-content: space-around;
-    padding:0;
+    padding: 0;
     width: 265px;
 }
-#content ul li{
-    width: 22%;
+
+#content ul li {
+    /*   width: 22%; */
     list-style: none;
     border: 1px solid darkgray;
     padding: 10px;
     cursor: pointer;
 }
-#content ul li:hover{
+
+#content ul li:hover {
     border: 1px solid red;
 }
-.footer{
+
+.footer {
     font-size: 25px;
     color: white;
-background-color: darkred;
+    background-color: darkred;
 }
-#img3{
+
+#img3 {
     vertical-align: middle;
     margin: 10px 50px 30px 10px;
     width: 200px;
 }
-#content hr{
+
+#content hr {
     width: 100%;
     border-bottom: 3px solid black;
     color: black;
 }
 
+.rows {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width:540px) {
+    .col {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:540px) {
+    .col {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:720px) {
+    .col {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width:960px) {
+    .col {
+        width: 33.3%;
+    }
+}
+
+@media screen and (min-width:1140px) {
+    .col {
+        width: 25%;
+    }
+}

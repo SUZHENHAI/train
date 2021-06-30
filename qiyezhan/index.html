@@ -62,7 +62,7 @@
                 </h2>
 
                 <div id="c1" class="container">
-                    <div>
+                    <div class="">
                         <img src="buy.png" height="50px" width="50px">
                         <br>
                         <span>商品购买</span>
@@ -98,7 +98,6 @@
                             <p style="font-size:23px;">LANVIN竭诚为您提供出色的顾客服务，并对产品和服务品质保持创新态度而感到自豪。</p>
                         </div>
                     </div>
-
                     <div class="tro tro2">
 
                         <div class="txt">
@@ -139,7 +138,7 @@
 
                     for (let i = 0; i < 4; i++) {
                         let li = $("<li></li>");
-                        li.append(`<img width='270px' height='250px' src="${res.data.data.list[i].img}" alt="">`);
+                        li.append(`<img width='250px' height='220px' style=" padding:20px;" src="${res.data.data.list[i].img}" alt="">`);
                         li.append(`<p style="font-weight: bold; font-size: 20px;">${res.data.data.list[i].title}</p>`);
                         li.append(`<p style="color:red; font-size: 10px; margin: auto;">${res.data.data.list[i].time}</p>`);
                         li.append(`<p style="font-size: 12px;">${res.data.data.list[i].content}</p>`);
