@@ -3,87 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
+    <title>响应式div等比缩放</title>
 </head>
 
 <body>
-    <div id='footers'>fdsfdsf</div>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <div style="width:20%;height:0;padding-bottom:20%;background-color:#ccc;">不使用ui框架的div响应式等比缩放</div>
 </body>
-<script>
-    $(function() {
-        $('#lists').removeClass('list-mobile')
-        $('#menus').click(function() {
-            if ($('#lists').hasClass('list-mobile')) {
-                $('#lists').removeClass('list-mobile')
-            } else {
-                $('#lists').addClass('list-mobile')
-            }
-        })
-
-        $(window).scroll(function() {
-                console.log("1", $(document).scrollTop())
-                if ($(document).scrollTop() >= 2000) {
-                    $('#img').attr('src', 'erweima.jpg')
-                }
-            })
-            // var myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
-
-        // $('#footers').click(function() {
-        //     console.log("fff")
-        //     myModal.show()
-        // })
-        // $("#submit").click(function() {
-        //     let email = $('#exampleInputEmail1').val()
-        //     let message = $('#exampleInputPassword1').val()
-        //     console.log("email", email, message)
-        //     axios({
-        //         url: 'https://anxhpmw8.lc-cn-n1-shared.com/1.1/classes/data',
-        //         method: 'post',
-        //         headers: {
-        //             'X-LC-Id': 'ANXHpmW8OqNdyMJFzXeYiBnU-gzGzoHsz',
-        //             'X-LC-Key': 'uXeb0P7atQceCfDm8Csb7Jtq'
-        //         },
-        //         data: {
-        //             email: email,
-        //             message: message
-        //         }
-        //     })
-        //     myModal.hide()
-        // })
-    })
-</script>
 
 </html>

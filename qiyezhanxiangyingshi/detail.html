@@ -28,7 +28,7 @@
         <div class="navs navbars">
             <div class="navbar-box container">
                 <div class="logo">
-                    <img id="img1" src="logo.png">
+                    <img class="lazyload" id="img1" data-src="logo.png">
                     <span>并夕夕</span>
                 </div>
                 <div id='menus' class="menu">菜单</div>
@@ -36,8 +36,8 @@
                 <div id="lists" class="list list-mobile">
                     <a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;
                     <a href="news.html">新闻</a>&nbsp;&nbsp;&nbsp;
-                    <a href="map.html" style="pointer-events: none;">关于我们</a>&nbsp;&nbsp;&nbsp;
-                    <a href="gerenzhanshiye.html" style="pointer-events: none;">个人展示页</a>&nbsp;&nbsp;&nbsp;
+                    <a href="map.html">关于我们</a>&nbsp;&nbsp;&nbsp;
+                    <a href="gerenzhanshiye.html">个人展示页</a>&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <!--  <script>
         /*  alert(window.location.search.split('=')[1]); */
         var idx = window.location.search.split('=')[1];
         /* axios.get(`https://www.fastmock.site/mock/9ebe3a368a27679abbcec28818a46c73/api/api/${window.location.search.split('=')[1]}`).then(function(res) { */
@@ -110,6 +110,22 @@
             main.append(`<p style="color:red; font-size: 20px; margin: auto;">${res.data.data.news[idx].time}</p>`);
             main.append(`<img data-src="${res.data.data.news[idx].img}" class="lazyload" style="height:30% ; width:60%;" alt="">`);
             main.append(`<p style="font-size: 28px; text-align:left">${res.data.data.news[idx].mainContent}</p>`);
+        })
+    </script> -->
+    <script>
+        var idx = window.location.search.split('=')[1];
+
+        axios.get(`https://www.fastmock.site/mock/9ebe3a368a27679abbcec28818a46c73/api/detail?id=${idx}`).then(function(res) {
+            console.log(res.data);
+            /*  let title = $(`<h1>${res.data.name}</h1>`);
+             $('#div').append(title); */
+
+            var main = $('#main');
+            let title = $(`<h1>${res.data.data.list[0].title}</h1>`);
+            main.append(title);
+            main.append(`<p style="color:red; font-size: 20px; margin: auto;">${res.data.data.list[0].time}</p>`);
+            main.append(`<img data-src="${res.data.data.list[0].img}" class="lazyload" style="height:30% ; width:60%;" alt="">`);
+            main.append(`<p style="font-size: 28px; text-align:left">${res.data.data.list[0].mainContent}</p>`);
         })
     </script>
     <script>
